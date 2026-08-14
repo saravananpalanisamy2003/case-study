@@ -1,44 +1,140 @@
-import { ArrowUpRight, Quote } from 'lucide-react';
+import { useState } from 'react';
+import { ArrowRight, Quote, Star, MessageSquare } from 'lucide-react';
 import { testimonials } from '../../data/content';
-import { useFormModal } from '../../context/FormModalContext';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import { SectionHeader } from '../ui/SectionHeader';
+
+// Extend the existing testimonials data with mock avatars and parsed roles for the UI
+const augmentedTestimonials = testimonials.map((t, index) => {
+  const parts = t.author.split(', ');
+  return {
+    ...t,
+    authorRole: parts.length > 1 ? parts[0] : 'Client',
+    authorName: parts.length > 1 ? parts.slice(1).join(', ') : parts[0],
+    avatar: index === 0 
+      ? 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80' // Professional woman
+      : 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80'  // Professional man
+  };
+});
+
+const collageImages = [
+  'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=400&q=80',
+  'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=400&q=80',
+  'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=400&q=80',
+  'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80',
+];
 
 export function TestimonialsSection() {
   const { ref, visible } = useScrollReveal<HTMLElement>();
-  const { openFormModal } = useFormModal();
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const current = augmentedTestimonials[activeIndex];
 
   return (
-    <section id="testimonials" ref={ref} className="scroll-mt-24 relative overflow-hidden bg-[#1A1008] py-20 text-white sm:py-28">
-      <div className="pointer-events-none absolute left-1/2 top-0 h-px w-2/3 -translate-x-1/2 bg-gradient-to-r from-transparent via-[#FF6600] to-transparent" />
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <div className={`grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="lg:sticky lg:top-28">
-            <Quote className="text-[#FF6600]" size={40} />
-            <h2 className="mt-6 font-display text-4xl font-extrabold leading-tight sm:text-5xl">
-              Client Testimonials
-            </h2>
-            <button
-              type="button"
-              onClick={openFormModal}
-              className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#FF6600] px-6 py-3.5 text-sm font-bold text-white transition hover:bg-white hover:text-[#1A1008]"
-            >
-              Book My Free Growth Audit <ArrowUpRight size={16} />
-            </button>
+    <section id="testimonials" ref={ref} className="bg-[#F8F9FA] py-12 overflow-hidden">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className={`transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <SectionHeader icon={MessageSquare} title1="Trusted By" title2="The Best" />
+        </div>
+        <div className={`mt-4 grid gap-16 lg:grid-cols-2 lg:items-center transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+          
+          {/* Left Column: 4-Image Collage */}
+          <div className="relative w-full max-w-lg mx-auto lg:max-w-none grid grid-cols-2 grid-rows-2 gap-4">
+            <img 
+              src={collageImages[0]} 
+              alt="Workspace Team" 
+              className="w-full h-48 md:h-64 object-cover rounded-tl-[80px] rounded-tr-[20px] rounded-br-[20px] rounded-bl-[20px]" 
+            />
+            <img 
+              src={collageImages[1]} 
+              alt="Professional Women" 
+              className="w-full h-48 md:h-64 object-cover rounded-tr-[80px] rounded-br-[20px] rounded-bl-[20px] rounded-tl-[20px]" 
+            />
+            <img 
+              src={collageImages[2]} 
+              alt="Workspace Meeting" 
+              className="w-full h-48 md:h-64 object-cover rounded-bl-[80px] rounded-br-[20px] rounded-tr-[20px] rounded-tl-[20px]" 
+            />
+            <img 
+              src={collageImages[3]} 
+              alt="Professional Man" 
+              className="w-full h-48 md:h-64 object-cover rounded-br-[80px] rounded-bl-[20px] rounded-tl-[20px] rounded-tr-[20px]" 
+            />
+            
+            {/* Center Orange Quote Badge */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 md:w-32 md:h-32 bg-[#FF6600] rounded-full flex items-center justify-center border-8 border-[#F8F9FA] z-10 shadow-lg">
+               <Quote size={48} className="text-white fill-white" />
+            </div>
           </div>
 
-          <div className="space-y-6">
-            {testimonials.map(({ quote, author }, index) => (
-              <blockquote
-                key={author}
-                className={`rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur transition-all duration-700 hover:border-[#FF6600]/30 hover:bg-white/10 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-                style={{ transitionDelay: `${150 + index * 100}ms` }}
-              >
-                <p className="text-lg leading-8 text-white/85">&ldquo;{quote}&rdquo;</p>
-                <footer className="mt-6 text-xs font-bold uppercase tracking-[0.15em] text-[#FF6600]">
-                  — {author}
-                </footer>
-              </blockquote>
-            ))}
+          {/* Right Column: Testimonial Content & Carousel */}
+          <div className="flex flex-col justify-center">
+            
+            <div className="flex items-center gap-3 text-sm font-bold text-gray-500 uppercase tracking-wide">
+               <div className="flex gap-1 text-[#FF6600]">
+                 <Star size={18} className="fill-current" />
+                 <Star size={18} className="fill-current" />
+                 <Star size={18} className="fill-current" />
+                 <Star size={18} className="fill-current" />
+                 <Star size={18} className="fill-current" />
+               </div>
+               <span>(5) AVERAGE RATING</span>
+            </div>
+
+            <div className="mt-10 relative">
+              <p className="text-xl md:text-2xl text-[#6B5E58] leading-relaxed pr-12 min-h-[160px]">
+                {current.quote}
+              </p>
+              
+              <div className="mt-10 flex items-center gap-5">
+                <img src={current.avatar} alt={current.authorName} className="w-16 h-16 rounded-full object-cover shadow-sm" />
+                <div>
+                  <p className="font-display font-extrabold text-xl text-[#1F1408]">{current.authorName}</p>
+                  <p className="text-sm font-medium text-gray-500 mt-1">{current.authorRole}</p>
+                </div>
+              </div>
+              
+              {/* Decorative Quote Mark */}
+              <Quote 
+                className="absolute bottom-4 right-4 w-12 h-12 md:w-20 md:h-20 text-[#0F2E3C] fill-[#FF6600] text-transparent opacity-90 rotate-180 drop-shadow-xl" 
+                style={{ filter: "drop-shadow(0px 10px 15px rgba(255, 102, 0, 0.2))" }}
+              />
+            </div>
+
+            {/* Carousel Indicators and Navigation */}
+            <div className="mt-12 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                {augmentedTestimonials.map((_, idx) => (
+                  <button 
+                    key={idx}
+                    onClick={() => setActiveIndex(idx)}
+                    className={`w-3.5 h-3.5 border transition-all ${
+                      activeIndex === idx 
+                        ? 'bg-[#FF6600] border-[#FF6600]' 
+                        : 'bg-transparent border-[#1F1408] hover:border-[#FF6600]'
+                    }`}
+                    aria-label={`View testimonial ${idx + 1}`}
+                  />
+                ))}
+              </div>
+              <div className="flex items-center gap-4">
+                <button
+                  onClick={() => setActiveIndex((prev) => (prev === 0 ? augmentedTestimonials.length - 1 : prev - 1))}
+                  className="grid h-12 w-12 place-items-center rounded-full border border-[#1F1408]/20 text-[#1F1408] transition-colors hover:bg-[#FF6600] hover:text-white hover:border-[#FF6600]"
+                  aria-label="Previous testimonial"
+                >
+                  <ArrowRight size={20} className="rotate-180" />
+                </button>
+                <button
+                  onClick={() => setActiveIndex((prev) => (prev === augmentedTestimonials.length - 1 ? 0 : prev + 1))}
+                  className="grid h-12 w-12 place-items-center rounded-full border border-[#1F1408]/20 text-[#1F1408] transition-colors hover:bg-[#FF6600] hover:text-white hover:border-[#FF6600]"
+                  aria-label="Next testimonial"
+                >
+                  <ArrowRight size={20} />
+                </button>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>

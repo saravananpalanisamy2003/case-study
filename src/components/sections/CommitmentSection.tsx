@@ -1,39 +1,63 @@
-import { BarChart3, MousePointer2, Sparkles } from 'lucide-react';
+import { ArrowUpRight, ZoomIn, Handshake } from 'lucide-react';
 import { commitments } from '../../data/content';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import { useFormModal } from '../../context/FormModalContext';
+import { SectionHeader } from '../ui/SectionHeader';
+import { PremiumImageHover } from '../PremiumImageHover';
 
-const icons = [BarChart3, Sparkles, MousePointer2];
+// Reusing content but adding relevant premium images to match the new UI
+const commitmentImages = [
+  'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80', // Analytics/Reporting
+  'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80', // AI/Network
+  'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80', // Direct Meeting
+];
 
 export function CommitmentSection() {
   const { ref, visible } = useScrollReveal<HTMLElement>();
+  const { openFormModal } = useFormModal();
 
   return (
-    <section ref={ref} className="bg-[#FFFAF7] py-20 sm:py-28">
+    <section ref={ref} className="bg-[#FFFAF7] py-12">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className={`mb-12 max-w-2xl transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <h2 className="font-display text-3xl font-extrabold leading-tight text-[#1F1408] sm:text-4xl">
-            Our Client Commitment
-          </h2>
+        <div className={`transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <SectionHeader icon={Handshake} title1="Our Client" title2="Commitment" />
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-3">
-          {commitments.map(({ title, text }, index) => {
-            const Icon = icons[index];
-            return (
-              <div
-                key={title}
-                className={`group relative overflow-hidden rounded-3xl border border-[#F0E0D6] bg-white p-8 transition-all duration-700 hover:-translate-y-2 hover:border-[#FF6600]/30 hover:shadow-xl ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-                style={{ transitionDelay: `${120 + index * 90}ms` }}
-              >
-                <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-[#FF6600]/5 transition group-hover:scale-150" />
-                <div className="relative mb-8 grid h-12 w-12 place-items-center rounded-xl bg-[#1A1008] text-[#FF6600]">
-                  <Icon size={22} />
+        <div className="grid gap-x-8 gap-y-12 lg:grid-cols-3">
+          {commitments.map(({ title, text }, index) => (
+            <div
+              key={title}
+              className={`group relative transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+              style={{ transitionDelay: `${120 + index * 90}ms` }}
+            >
+              {/* Image Container with Hover Effect */}
+              <PremiumImageHover 
+                src={commitmentImages[index]} 
+                alt={title}
+                className="overflow-hidden rounded-[20px] shadow-sm"
+                imgClassName="h-[280px] w-full object-cover"
+              />
+
+              {/* Text & Button Area */}
+              <div className="mt-6 flex items-start justify-between gap-4">
+                <div className="border-l-[3px] border-[#FF6600] pl-4">
+                  <h3 className="font-display text-[22px] font-extrabold leading-snug text-[#1F1408]">
+                    {title}
+                  </h3>
+                  <p className="mt-2 text-[15px] leading-relaxed text-[#6B5E58]">
+                    {text}
+                  </p>
                 </div>
-                <h3 className="relative font-display text-xl font-extrabold text-[#1F1408]">{title}</h3>
-                <p className="relative mt-3 text-sm leading-7 text-[#6B5E58]">{text}</p>
+                <button 
+                  onClick={openFormModal}
+                  className="flex h-12 w-12 shrink-0 items-center justify-center bg-[#0F2E3C] text-white transition-colors hover:bg-[#FF6600]"
+                  aria-label="View Details"
+                >
+                  <ArrowUpRight size={22} strokeWidth={2} />
+                </button>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
       </div>
     </section>

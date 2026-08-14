@@ -9,6 +9,8 @@ export const webDevClientWebsites = [
   {
     title: 'Covai Tech Park',
     type: 'Coworking & Managed Offices',
+    logo: 'https://www.google.com/s2/favicons?domain=covaitechpark.com&sz=128',
+    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=80',
     before:
       'A growing multi-location brand with centres across Coimbatore and Trichy, but no single website bringing all locations and workspace types together in one clear structure.',
     after:
@@ -17,6 +19,8 @@ export const webDevClientWebsites = [
   {
     title: 'SG Education',
     type: 'Pre-School & Early Learning',
+    logo: 'https://www.google.com/s2/favicons?domain=sgeducations.in&sz=128',
+    image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80',
     before:
       "Admissions relied on in-person visits and word-of-mouth, with no structured way for parents to learn about the school's teaching philosophy online.",
     after:
@@ -25,6 +29,8 @@ export const webDevClientWebsites = [
   {
     title: 'Ellora Bakery Equipments',
     type: 'Manufacturing & Product Catalog',
+    logo: 'https://www.google.com/s2/favicons?domain=ellorabakeryequipments.com&sz=128',
+    image: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=900&q=80',
     before:
       'A wide range of bakery, kitchen, and refrigeration display products with no structured way for B2B buyers to browse by category online.',
     after:
@@ -33,6 +39,8 @@ export const webDevClientWebsites = [
   {
     title: 'Arsen Interiors',
     type: 'Interior Fit-Out & Turnkey Execution',
+    logo: 'https://www.google.com/s2/favicons?domain=arseninterior.in&sz=128',
+    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41fa6046?auto=format&fit=crop&w=900&q=80',
     before:
       "An established turnkey interior contractor with 12+ years of execution experience and a strong corporate client roster — carpentry, electrical, false ceiling, HVAC, and modular furniture work — but a website that didn't reflect the scale or quality of that project portfolio.",
     after:
@@ -71,4 +79,5 @@ export const webDevLiveSites = [
   { name: 'SG Education', url: 'https://sgeducations.in' },
   { name: 'Ellora Bakery Equipments', url: 'https://ellorabakeryequipments.com' },
   { name: 'Arsen Interiors', url: 'https://arseninterior.in' },
+  { name: 'Universe Coworks', url: 'https://universecoworks.com' },
 ];

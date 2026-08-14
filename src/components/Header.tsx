@@ -2,11 +2,15 @@ import { useState } from 'react';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
 import { TABS, useTab, type TabId } from '../context/TabContext';
 import { useFormModal } from '../context/FormModalContext';
+import { useScrolledPastHero } from '../hooks/useScrolledPastHero';
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { activeTab, selectTab } = useTab();
   const { openFormModal } = useFormModal();
+  const pastHero = useScrolledPastHero();
+
+  const solid = pastHero || mobileOpen;
 
   const handleNav = (tab: TabId) => {
     setMobileOpen(false);
@@ -17,7 +21,13 @@ export function Header() {
     activeTab === 'web' ? 'Book My Free Website Review' : 'Book My Free Growth Audit';
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-[#E8E8E8] bg-white/95 text-[#1A1008] shadow-sm backdrop-blur-md">
+    <header
+      className={`absolute inset-x-0 top-0 z-[100] transition-all duration-500 ${
+        solid
+          ? 'border-b border-[#E8E8E8]/80 bg-white/95 shadow-sm backdrop-blur-md'
+          : 'border-b border-white/10 bg-transparent'
+      }`}
+    >
       <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5 sm:px-8">
         <button
           type="button"
@@ -27,15 +37,23 @@ export function Header() {
           }}
           className="flex items-center"
         >
-          <img src="/logo.webp" alt="Inymart Logo" className="h-8 w-auto object-contain" />
+          <img src={`${import.meta.env.BASE_URL}logo.webp`} alt="Inymart Logo" className="h-8 w-auto object-contain" />
         </button>
-        <nav className="hidden items-center gap-5 text-sm font-semibold text-[#1A1008]/75 lg:flex lg:gap-7">
+        <nav className="hidden items-center gap-5 text-sm font-semibold lg:flex lg:gap-7">
           {TABS.map(({ id, label }) => (
             <button
               key={id}
               type="button"
               onClick={() => handleNav(id)}
-              className={`transition hover:text-[#FF6600] ${activeTab === id ? 'text-[#FF6600]' : ''}`}
+              className={`transition duration-300 hover:text-[#FF6600] ${
+                solid
+                  ? activeTab === id
+                  ? 'text-[#FF6600]'
+                  : 'text-[#1A1008]/75'
+                  : activeTab === id
+                    ? 'text-[#FF6600]'
+                    : 'text-white/85 hover:text-white'
+              }`}
             >
               {label}
             </button>
@@ -43,14 +61,14 @@ export function Header() {
           <button
             type="button"
             onClick={openFormModal}
-            className="inline-flex items-center gap-2 rounded-full bg-[#FF6600] px-5 py-2.5 text-sm font-bold uppercase tracking-wide text-white transition hover:bg-[#E85D04]"
+            className="inline-flex items-center gap-2 rounded-full bg-[#FF6600] px-5 py-2.5 text-sm font-bold uppercase tracking-wide text-white shadow-lg shadow-[#FF6600]/30 transition hover:bg-[#E85D04] hover:shadow-[#FF6600]/40"
           >
             {ctaLabel} <ArrowUpRight size={15} />
           </button>
         </nav>
         <button
           type="button"
-          className="text-[#1A1008] lg:hidden"
+          className={`lg:hidden ${solid ? 'text-[#1A1008]' : 'text-white'}`}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >

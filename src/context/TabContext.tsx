@@ -1,12 +1,11 @@
 import { createContext, useCallback, useContext, useMemo, useState } from 'react';
 
-export type TabId = 'digital' | 'web' | 'software' | 'contact';
+export type TabId = 'digital' | 'web' | 'software';
 
 export const TABS: { id: TabId; label: string }[] = [
   { id: 'digital', label: 'Digital Marketing' },
   { id: 'web', label: 'Web Development' },
   { id: 'software', label: 'Software' },
-  { id: 'contact', label: 'Contact' },
 ];
 
 type TabContextValue = {
