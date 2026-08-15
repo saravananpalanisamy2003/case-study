@@ -47,7 +47,7 @@ export function SocialMediaSection() {
           {/* Right Side: Image matching height */}
           <div className={`relative hidden lg:block rounded-3xl overflow-hidden shadow-xl transition-all duration-700 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`} style={{ transitionDelay: '300ms' }}>
              <img 
-               src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=1200&q=80" 
+               src={`${import.meta.env.BASE_URL}SMM (home).png`} 
                alt="Social Media Management" 
                className="absolute inset-0 w-full h-full object-cover"
              />

@@ -1,4 +1,4 @@
-import { ArrowRight, Mail, MapPin, Phone, Linkedin, Twitter, Facebook, Instagram } from 'lucide-react';
+import { ArrowRight, Mail, MapPin, Phone, Linkedin, Facebook, Instagram, Youtube } from 'lucide-react';
 import { useFormModal } from '../context/FormModalContext';
 
 export function Footer() {
@@ -65,10 +65,10 @@ export function Footer() {
               </ul>
               
               <div className="flex items-center gap-4 text-white/60">
-                <a href="#" aria-label="LinkedIn" className="hover:text-[#FF6600] transition-colors"><Linkedin size={20} /></a>
-                <a href="#" aria-label="Twitter" className="hover:text-[#FF6600] transition-colors"><Twitter size={20} /></a>
-                <a href="#" aria-label="Facebook" className="hover:text-[#FF6600] transition-colors"><Facebook size={20} /></a>
-                <a href="#" aria-label="Instagram" className="hover:text-[#FF6600] transition-colors"><Instagram size={20} /></a>
+                <a href="https://www.linkedin.com/company/inymartlabs/" aria-label="LinkedIn" className="hover:text-[#FF6600] transition-colors" target="_blank" rel="noopener noreferrer"><Linkedin size={20} /></a>
+                <a href="https://www.facebook.com/people/Inymart-Labs/61583856676865/" aria-label="Facebook" className="hover:text-[#FF6600] transition-colors" target="_blank" rel="noopener noreferrer"><Facebook size={20} /></a>
+                <a href="https://www.instagram.com/inymart_labs/" aria-label="Instagram" className="hover:text-[#FF6600] transition-colors" target="_blank" rel="noopener noreferrer"><Instagram size={20} /></a>
+                <a href="https://www.youtube.com/@InymartLabs" aria-label="YouTube" className="hover:text-[#FF6600] transition-colors" target="_blank" rel="noopener noreferrer"><Youtube size={20} /></a>
               </div>
             </div>
           </div>

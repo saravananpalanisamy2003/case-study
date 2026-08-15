@@ -121,7 +121,7 @@ export function ContactFormModal({ open, onClose }: ContactFormModalProps) {
                 const data = Object.fromEntries(formData.entries());
 
                 try {
-                  const response = await fetch(`${import.meta.env.BASE_URL}contact.php`, {
+                  const response = await fetch('/api/contact', {
                     method: 'POST',
                     headers: {
                       'Content-Type': 'application/json',
@@ -135,7 +135,7 @@ export function ContactFormModal({ open, onClose }: ContactFormModalProps) {
                   try {
                     result = JSON.parse(text);
                   } catch (parseError) {
-                    throw new Error("Invalid response from server. Make sure you are running on a PHP-enabled server.");
+                    throw new Error("Invalid response from server. Make sure the backend server is running.");
                   }
                   
                   if (response.ok && result.status === 'success') {

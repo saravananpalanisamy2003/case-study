@@ -268,7 +268,7 @@ function WebCapabilitiesSection() {
 // ----------------------------------------------------------------------
 // Same images used in the CommitmentSection of Digital Marketing to keep UI consistent
 const commitmentImages = [
-  'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=800&q=80',
   'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80',
   'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=800&q=80',
 ];
@@ -361,7 +361,7 @@ function WebBottomCTASection({ onOpenForm }: { onOpenForm: () => void }) {
         {/* Background Image & Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1600&q=80" 
+            src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1600&q=80" 
             alt="Workspace" 
             className="w-full h-full object-cover opacity-30" 
           />
