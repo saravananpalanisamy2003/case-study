@@ -71,15 +71,14 @@ export function ContactFormModal({ open, onClose }: ContactFormModalProps) {
           <X size={20} strokeWidth={2.5} />
         </button>
 
-        {/* Floating Contact Badge (hidden on mobile) */}
-        <div className="absolute right-[5%] top-[20%] lg:right-[18%] lg:top-[25%] z-20 hidden md:flex items-center gap-3 bg-[#FF6600] rounded-full p-2 pr-6 shadow-[0_20px_40px_rgba(255,102,0,0.3)] -rotate-12 transition-transform hover:rotate-0 duration-300">
+        <a href="tel:+919994723446" className="absolute right-[5%] top-[20%] lg:right-[18%] lg:top-[25%] z-20 hidden md:flex items-center gap-3 bg-[#FF6600] rounded-full p-2 pr-6 shadow-[0_20px_40px_rgba(255,102,0,0.3)] -rotate-12 transition-transform hover:rotate-0 duration-300 cursor-pointer hover:bg-[#E85D04]">
           <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-[#FF6600]">
             <Phone size={20} strokeWidth={2.5} className="rotate-12" />
           </div>
           <div className="text-white text-[13px] font-extrabold leading-tight">
-            Get Contact Now <br/> +11234 751 328
+            Get Contact Now <br/> +91 9994723446
           </div>
-        </div>
+        </a>
 
         {/* Form Content */}
         <div className="relative z-10 w-full p-5 sm:p-8 md:p-10 lg:p-12 lg:w-3/5">

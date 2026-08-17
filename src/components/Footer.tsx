@@ -52,15 +52,21 @@ export function Footer() {
               <ul className="space-y-3 text-white/60 mb-6">
                 <li className="flex items-start gap-3">
                   <MapPin size={18} className="text-[#FF6600] shrink-0 mt-0.5" />
-                  <span>Trichy, Tamil Nadu<br />India</span>
+                  <span>
+                    <a href="https://inymartlabs.com/" className="hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">
+                      No.17, C3, 3rd Floor, Ayodhya Complex,<br />
+                      Thennur High Road, Srinivasapuram, Tennur,<br />
+                      Tiruchirappalli, Tamil Nadu 620017.
+                    </a>
+                  </span>
                 </li>
                 <li className="flex items-center gap-3">
                   <Mail size={18} className="text-[#FF6600] shrink-0" />
-                  <a href="mailto:hello@inymart.com" className="hover:text-white transition-colors">hello@inymart.com</a>
+                  <a href="mailto:ceo@inymartlabs.com" className="hover:text-white transition-colors">ceo@inymartlabs.com</a>
                 </li>
                 <li className="flex items-center gap-3">
                   <Phone size={18} className="text-[#FF6600] shrink-0" />
-                  <span>+91 98765 43210</span>
+                  <a href="tel:+919994723446" className="hover:text-white transition-colors">+91 9994723446</a>
                 </li>
               </ul>
               

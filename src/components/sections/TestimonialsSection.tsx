@@ -102,20 +102,8 @@ export function TestimonialsSection() {
             </div>
 
             {/* Carousel Indicators and Navigation */}
-            <div className="mt-12 flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                {augmentedTestimonials.map((_, idx) => (
-                  <button 
-                    key={idx}
-                    onClick={() => setActiveIndex(idx)}
-                    className={`w-3.5 h-3.5 border transition-all ${
-                      activeIndex === idx 
-                        ? 'bg-[#FF6600] border-[#FF6600]' 
-                        : 'bg-transparent border-[#1F1408] hover:border-[#FF6600]'
-                    }`}
-                    aria-label={`View testimonial ${idx + 1}`}
-                  />
-                ))}
+            <div className="mt-12 flex items-center justify-end">
+              <div className="hidden">
               </div>
               <div className="flex items-center gap-4">
                 <button

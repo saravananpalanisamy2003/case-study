@@ -57,12 +57,10 @@ export function ClientResultsSection() {
       ref={(el) => {
         ref.current = el;
       }} 
-      className="relative bg-[#FFFAF7] pt-12 pb-0"
+      className="relative bg-[#FFFAF7] pt-12 pb-0 -mb-8 md:-mb-[60vh]"
     >
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className={`mb-6 transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <SectionHeader icon={TrendingUp} title1="Real Client" title2="Results" />
-        </div>
+
 
         {/* Scroll-triggered stacked cards container */}
         <div className="relative pb-0 flex flex-col">
@@ -77,7 +75,7 @@ export function ClientResultsSection() {
                   zIndex: index + 1,
                 }}
               >
-                <article className="shadow-[0_30px_60px_rgba(0,0,0,0.08)] rounded-3xl overflow-hidden border border-[#F0E0D6] bg-white group">
+                <article className="relative z-10 shadow-[0_30px_60px_rgba(0,0,0,0.08)] rounded-3xl overflow-hidden border border-[#F0E0D6] bg-white group">
               <div className="grid lg:grid-cols-2 min-h-[400px]">
                 {/* Left Side: Dark Before Presentation */}
                 <div className="relative bg-[#1A1008] p-10 md:p-14 flex flex-col justify-center overflow-hidden">
@@ -118,24 +116,19 @@ export function ClientResultsSection() {
                 </div>
               </div>
             </article>
+            {index === clientResults.length - 1 && (
+              <div className="relative z-0 bg-[#FFFAF7] py-6">
+                <div className="relative rounded-2xl border border-[#FF6600]/30 bg-gradient-to-r from-[#FFF4ED] to-white p-6 sm:p-8 shadow-lg overflow-hidden">
+                  <div className="absolute left-0 top-0 h-full w-1.5 bg-[#FF6600]" />
+                  <p className="text-sm font-semibold leading-relaxed text-[#1F1408] sm:text-base">
+                    {clientResultsProof}
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
             );
           })}
-          
-          {/* Treat the proof box as the final "7th card" to eliminate empty space while preserving Card 6's runway */}
-          <div
-            className="static md:sticky transition-all duration-700 ease-out will-change-transform mb-0"
-            style={{
-              top: `calc(120px + ${5 * 24}px + 450px)`,
-              zIndex: 10,
-            }}
-          >
-            <div
-              className={`rounded-3xl border border-[#FF6600]/20 bg-[#FFF4ED] px-8 py-6 text-sm leading-7 text-[#1F1408] transition-all duration-700 delay-500 sm:text-base shadow-sm ${visible ? 'opacity-100' : 'opacity-0'}`}
-            >
-              {clientResultsProof}
-            </div>
-          </div>
         </div>
       </div>
 

@@ -7,37 +7,37 @@ export const metrics = [
 
 export const clientResults = [
   {
-    title: 'Inymart Labs — Best for D2C & Organic Farming Brands',
+    title: 'Best for D2C & Organic Farming Brands',
     before: 'Inconsistent monthly sales, high customer acquisition cost, low repeat purchases.',
     after:
       'Built a farm-to-bottle storytelling campaign across Meta and Google Ads, achieving a 3.8X average ROAS and a 35% repeat customer rate — turning a struggling ad account into a predictable, scalable revenue channel.',
   },
   {
-    title: 'Inymart Labs — Best for Commercial Real Estate & IT Parks',
+    title: 'Best for Commercial Real Estate & IT Parks',
     before: 'Website ranked beyond Page 5 on Google, generating only 2–3 inquiries a month.',
     after:
       'Full technical SEO overhaul and UI/UX redesign brought the site to Page 1 within 90 days — tenant inquiries grew 4X.',
   },
   {
-    title: 'Inymart Labs — Best for Coworking & Workspace Brands',
+    title: 'Best for Coworking & Workspace Brands',
     before: 'New brand launch, zero local visibility, high vacancy.',
     after:
       'Local SEO and Google Business Profile optimization took the brand to #2 local ranking within 6 months. The lead pipeline supported expansion from 1 to 3 branches — all currently fully occupied.',
   },
   {
-    title: 'Inymart Labs — Best for Shared Office Space Providers',
+    title: 'Best for Shared Office Space Providers',
     before: 'Losing visibility to regional competitors on local search.',
     after:
       'Combined SEO, AEO, and GEO strategy secured the #1 position across Google Search, Google Maps, and AI answer engines for primary coworking keywords in Trichy.',
   },
   {
-    title: 'Inymart Labs — Best for Industrial & B2B Manufacturing Brands',
+    title: 'Best for Industrial & B2B Manufacturing Brands',
     before: 'Limited to word-of-mouth leads, no organized digital presence.',
     after:
       'Structured SEO + AEO strategy targeting both regional and pan-India buyer searches, building long-term organic lead generation for industrial and agricultural shed construction.',
   },
   {
-    title: 'Inymart Labs — Best for EdTech & Training Institutes',
+    title: 'Best for EdTech & Training Institutes',
     before: 'Relied on referrals and word-of-mouth for student enrollment, no organic search visibility.',
     after:
       'Applied our own SEO + AEO strategy in-house — now holds the #1 local ranking in Trichy for digital marketing course searches, with a consistent enrollment pipeline built entirely through organic and paid search.',
